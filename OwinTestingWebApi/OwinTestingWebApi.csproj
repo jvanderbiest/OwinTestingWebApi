@@ -141,7 +141,6 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include=".gitignore" />
     <Content Include="Global.asax" />
     <Content Include="index.html" />
     <Content Include="Web.config">

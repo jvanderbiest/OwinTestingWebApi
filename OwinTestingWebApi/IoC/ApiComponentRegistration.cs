@@ -4,12 +4,9 @@ using System.Web.Http.Dispatcher;
 using System.Web.Mvc;
 using System.Web.Routing;
 using Castle.Windsor;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
-using OwinTestingWebApi;
 using OwinTestingWebApi.IoC.Installer;
 
-namespace T2F.WebApi.IoC
+namespace OwinTestingWebApi.IoC
 {
     public class ApiComponentRegistration
     {

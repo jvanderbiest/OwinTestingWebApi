@@ -4,7 +4,7 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using Castle.Windsor;
 
-namespace T2F.WebApi.IoC
+namespace OwinTestingWebApi.IoC
 {
     public class WindsorControllerFactory : DefaultControllerFactory
     {

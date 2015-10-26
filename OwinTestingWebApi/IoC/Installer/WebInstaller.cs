@@ -1,9 +1,8 @@
 ﻿using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
-using OwinTestingWebApi.IoC.Installer;
 
-namespace T2F.WebApi.IoC.Installers
+namespace OwinTestingWebApi.IoC.Installer
 {
     public class WebInstaller : IWindsorInstaller
     {

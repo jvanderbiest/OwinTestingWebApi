@@ -133,7 +133,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include=".gitignore" />
     <Content Include="App.config" />
   </ItemGroup>
   <ItemGroup>

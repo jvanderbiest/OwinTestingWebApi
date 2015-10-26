@@ -4,7 +4,7 @@ using System.Web.Http.Controllers;
 using System.Web.Http.Dispatcher;
 using Castle.Windsor;
 
-namespace T2F.WebApi.IoC
+namespace OwinTestingWebApi.IoC
 {
     public class WindsorCompositionRoot : IHttpControllerActivator
     {
