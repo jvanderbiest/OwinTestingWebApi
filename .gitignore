@@ -1,0 +1,5 @@
+packages/**
+OwinTestingWebApi/bin/**
+OwinTestingWebApi/obj/**
+OwinTestingWebApi.Tests/bin/**
+OwinTestingWebApi.Tests/obj/**
