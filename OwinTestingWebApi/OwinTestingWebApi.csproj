@@ -133,7 +133,6 @@
     <Compile Include="IoC\ApiComponentRegistration.cs" />
     <Compile Include="IoC\Installer\ApiControllerInstaller.cs" />
     <Compile Include="IoC\Installer\ServicesInstaller.cs" />
-    <Compile Include="IoC\Installer\WebInstaller.cs" />
     <Compile Include="IoC\WindsorCompositionRoot.cs" />
     <Compile Include="IoC\WindsorControllerFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
