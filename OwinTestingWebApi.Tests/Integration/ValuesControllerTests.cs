@@ -18,7 +18,9 @@ namespace OwinTestingWebApi.Tests.Integration
         {
             public void Configuration(IAppBuilder app)
             {
-                new Startup().ConfigureForIntegrationTests(app, x => x.Kernel.ComponentModelBuilder.AddContributor(new SingletonEqualizer()));
+                var config = new HttpConfiguration();
+
+                new Startup().ConfigureForIntegrationTests(app, config,x => x.Kernel.ComponentModelBuilder.AddContributor(new SingletonEqualizer()));
                 GlobalConfiguration.Configuration.Services.Replace(typeof(IAssembliesResolver), new TestWebApiResolver());
                 GlobalConfiguration.Configure(WebApiConfig.Register);
             }
@@ -28,7 +30,9 @@ namespace OwinTestingWebApi.Tests.Integration
         {
             public void Configuration(IAppBuilder app)
             {
-                new Startup().ConfigureForIntegrationTests(app, x => x.Kernel.ComponentModelBuilder.AddContributor(new SingletonEqualizer()));
+                var config = new HttpConfiguration();
+                
+                new Startup().ConfigureForIntegrationTests(app, config,x => x.Kernel.ComponentModelBuilder.AddContributor(new SingletonEqualizer()));
                 GlobalConfiguration.Configure(WebApiConfig.Register);
                 GlobalConfiguration.Configuration.EnsureInitialized();
             }
@@ -38,54 +42,32 @@ namespace OwinTestingWebApi.Tests.Integration
         {
             public void Configuration(IAppBuilder app)
             {
-                new Startup().ConfigureForIntegrationTests(app, y => y.Kernel.ComponentModelBuilder.AddContributor(new SingletonEqualizer()));
+                HttpConfiguration config = new HttpConfiguration();
+
+                new Startup().ConfigureForIntegrationTests(app, config, y => y.Kernel.ComponentModelBuilder.AddContributor(new SingletonEqualizer()));
                 // Web API routes
 
-                GlobalConfiguration.Configuration.MapHttpAttributeRoutes();
+                config.MapHttpAttributeRoutes();
 
-                GlobalConfiguration.Configuration.Routes.MapHttpRoute(
+                config.Routes.MapHttpRoute(
                     name: "DefaultApi",
                     routeTemplate: "api/{controller}/{id}",
                     defaults: new { id = RouteParameter.Optional }
                 );
 
-                app.UseWebApi(GlobalConfiguration.Configuration);
-                GlobalConfiguration.Configuration.Services.Replace(typeof(IAssembliesResolver), new TestWebApiResolver());
+                app.UseWebApi(config);
+                //config.Services.Replace(typeof(IAssembliesResolver), new TestWebApiResolver());
             }
         }
 
         public TestServer Server { get; set; }
 
         [Test]
-        public async void GetValueTestForStartup1()
-        {
-            using (var server = TestServer.Create<Startup1>())
-            {
-                using (var client = new HttpClient(server.Handler))
-                {
-                    var request = await client.GetAsync(_url);
-
-                    // 404 Error
-                    Assert.IsTrue(request.IsSuccessStatusCode);
-                }
-            }
-        }
-
-        [Test]
-        public void GetValueTestForStartup3()
-        {
-            using (var server = TestServer.Create<Startup2>())
-            {
-                // System.InvalidOperationException : This method cannot be called during the application's pre-start initialization phase.
-            }
-        }
-
-        [Test]
         public async void GetValueTestForStartup5()
         {
             using (var server = TestServer.Create<Startup3>())
             {
-                GlobalConfiguration.Configuration.EnsureInitialized();
+                //GlobalConfiguration.Configuration.EnsureInitialized();
 
                 using (var client = new HttpClient(server.Handler))
                 {

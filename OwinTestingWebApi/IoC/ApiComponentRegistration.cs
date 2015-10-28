@@ -30,7 +30,7 @@ namespace OwinTestingWebApi.IoC
             _container.Install(new ApiControllerInstaller());
             _container.Install(new ServicesInstaller());
 
-            GlobalConfiguration.Configuration.Services.Replace(typeof(IHttpControllerActivator), new WindsorCompositionRoot(_container));
+            configuration.Services.Replace(typeof(IHttpControllerActivator), new WindsorCompositionRoot(_container));
             ControllerBuilder.Current.SetControllerFactory(new WindsorControllerFactory(_container));
 
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

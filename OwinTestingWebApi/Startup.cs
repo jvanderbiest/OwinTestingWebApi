@@ -22,10 +22,10 @@ namespace OwinTestingWebApi
             }
         }
 
-        public void ConfigureForIntegrationTests(IAppBuilder app, Action<IWindsorContainer> containerAction)
+        public void ConfigureForIntegrationTests(IAppBuilder app, HttpConfiguration configuration, Action<IWindsorContainer> containerAction)
         {
             _isTest = true;
-            _container = ApiComponentRegistration.Register(GlobalConfiguration.Configuration, containerAction);
+            _container = ApiComponentRegistration.Register(configuration, containerAction);
             Configuration(app);
         }
     }
